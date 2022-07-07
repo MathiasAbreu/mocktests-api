@@ -1,5 +1,6 @@
 package br.com.ufcg.easymocktests;
 
+import br.com.ufcg.easymocktests.interfaces.Authenticate;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -10,4 +11,8 @@ class EasymocktestsApplicationTests {
 	void contextLoads() {
 	}
 
+	@Authenticate
+	void login() {
+
+	}
 }
