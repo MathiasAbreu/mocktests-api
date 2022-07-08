@@ -3,10 +3,8 @@ package br.com.ufcg.easymocktests;
 import br.com.ufcg.easymocktests.classes.Authentication;
 import br.com.ufcg.easymocktests.interfaces.Authenticate;
 import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -25,6 +23,9 @@ class EasymocktestsApplicationTests {
 	private MockMvc mockMvc;
 
 	@Autowired
+	private MockTest mockTest;
+
+	@Autowired
 	private ObjectMapper objectMapper;
 
 	@Test
@@ -39,6 +40,7 @@ class EasymocktestsApplicationTests {
 
 	@Authenticate
 	void login() throws Exception {
+
 
 		mockMvc.perform(post("URL").contentType("application/json").content(objectMapper.writeValueAsString(""))).andExpect(status().isOk());
 		System.out.println("logando...");
