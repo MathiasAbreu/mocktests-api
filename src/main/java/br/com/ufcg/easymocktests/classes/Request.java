@@ -1,16 +1,28 @@
 package br.com.ufcg.easymocktests.classes;
 
-public class Request {
+public final class Request {
 
-    String operation;
+    private static Operation operation;
 
-    String endpoint;
+    private static String endpoint;
 
-    String header;
+    private static Header header;
 
-    String[] params;
+    private static String[] params;
 
-    String contentType;
+    private static String contentType;
 
-    Object body;
+    private static Object body;
+
+    public static void operation(Operation operation) {
+        Request.operation = operation;
+    }
+
+    public static void endpoint(String endpoint) {
+        Request.endpoint = endpoint;
+    }
+
+    public static void header(String name, TypeHeader typeHeader, String... values) {
+        Request.header = new Header(name, typeHeader, values);
+    }
 }

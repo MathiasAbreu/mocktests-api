@@ -1,6 +1,7 @@
 package br.com.ufcg.easymocktests;
 
 import br.com.ufcg.easymocktests.classes.Authentication;
+import br.com.ufcg.easymocktests.classes.Request;
 import br.com.ufcg.easymocktests.interfaces.Authenticate;
 import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,6 +45,7 @@ class EasymocktestsApplicationTests {
 
 		mockMvc.perform(post("URL").contentType("application/json").content(objectMapper.writeValueAsString(""))).andExpect(status().isOk());
 		System.out.println("logando...");
+		//mockTest.request(Request.params("parametro1"));
 	}
 
 	@AuthenticatedTest
