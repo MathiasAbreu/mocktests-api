@@ -22,13 +22,12 @@ class EasymocktestsApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
 
-	@Autowired
-	private MockTest mockTest;
+	private final MockTest mockTest = new MockTest();
 
 	@Autowired
 	private ObjectMapper objectMapper;
 
-	@Test
+	/*@Test
 	void contextLoads() {
 	}
 
@@ -44,21 +43,20 @@ class EasymocktestsApplicationTests {
 
 		mockMvc.perform(post("URL").contentType("application/json").content(objectMapper.writeValueAsString(""))).andExpect(status().isOk());
 		System.out.println("logando...");
-	}
+	}*/
 
-	@AuthenticatedTest
-	void test01() {
-		System.out.println("test 01 - sucess");
-	}
-
-	@AuthenticatedTest
-	void test02() {
-		System.out.println("test 02 - sucess");
-	}
-
-	@AuthenticatedTest
 	@Test
-	void test03() {
-		System.out.println("test 03 - sucess");
+	void test01() throws Exception {
+		mockTest.performTest(1);
+	}
+
+	@Test
+	void test02() throws Exception {
+		mockTest.performTest(2);
+	}
+
+	@Test
+	void test03() throws Exception {
+		mockTest.performTest(3);
 	}
 }
