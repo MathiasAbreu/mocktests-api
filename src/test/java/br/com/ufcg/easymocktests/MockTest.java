@@ -23,9 +23,10 @@ public class MockTest {
     private MockMvc mockMvc;
 
     public void request(Request request) throws Exception {
-        Request.operation(Operation.GET);
-        Request.endpoint("ENDPOINT");
-        Request.header("Authorization", TypeHeader.BEARER,"TOKEN");
+        request.operation(Operation.GET)
+                .endpoint("ENDPOINT")
+                .header("Authorization", TypeHeader.BEARER,"TOKEN")
+                .params("1234").contentType("application/json").body("body");
     }
 
     public void performTest(int countTests) throws Exception {

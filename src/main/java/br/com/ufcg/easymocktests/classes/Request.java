@@ -8,21 +8,39 @@ public final class Request {
 
     private static Header header;
 
-    private static String[] params;
+    private static Object[] params;
 
     private static String contentType;
 
     private static Object body;
 
-    public static void operation(Operation operation) {
+    public Request operation(Operation operation) {
         Request.operation = operation;
+        return this;
     }
 
-    public static void endpoint(String endpoint) {
+    public Request endpoint(String endpoint) {
         Request.endpoint = endpoint;
+        return this;
     }
 
-    public static void header(String name, TypeHeader typeHeader, String... values) {
+    public Request header(String name, TypeHeader typeHeader, String... values) {
         Request.header = new Header(name, typeHeader, values);
+        return this;
+    }
+
+    public Request params(Object... params) {
+        Request.params = params;
+        return this;
+    }
+
+    public Request contentType(String contentType) {
+        Request.contentType = contentType;
+        return this;
+    }
+
+    public Request body(Object body) {
+        Request.body = body;
+        return this;
     }
 }

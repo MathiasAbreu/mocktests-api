@@ -2,7 +2,7 @@ package br.com.ufcg.easymocktests.classes;
 
 import br.com.ufcg.easymocktests.interfaces.Authenticate;
 import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
-import org.aspectj.util.Reflection;
+//import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
