@@ -1,6 +1,8 @@
-package br.com.ufcg.easymocktests;
+package br.com.ufcg.easymocktests.utils;
 
-import br.com.ufcg.easymocktests.classes.*;
+import br.com.ufcg.easymocktests.extensions.AuthenticateExtension;
+import br.com.ufcg.easymocktests.extensions.AuthenticatedTestExtension;
+import br.com.ufcg.easymocktests.models.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -9,9 +11,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
+import java.util.List;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
-//@SpringBootTest
 @EnableAutoConfiguration
 @AutoConfigureMockMvc
 public class MockTest {
@@ -23,36 +26,37 @@ public class MockTest {
     private ObjectMapper objectMapper;
 
     //classe alvo
-    private Object object;
+    private static Object object;
 
     private final AuthenticateExtension authenticateExtension = new AuthenticateExtension();
+    private final AuthenticatedTestExtension authenticatedTestExtension = new AuthenticatedTestExtension(object);
 
     public MockTest(Object object) {
         super();
-        this.object = object;
+        MockTest.object = object;
     }
     public ResultActions performTest(Request request) throws Exception {
 
         if(request.getHeader() == null) {
             if(authenticateExtension.methodLoginIsImplement(object)) {
-                ResultActions resultLogin = authenticateExtension.invokeMethodLogin(object);
-                if(resultLogin.andReturn().getResponse().getStatus() > 200 && resultLogin.andReturn().getResponse().getStatus() < 300) {
-                    String token = resultLogin.andReturn().getResponse().getContentAsString();
-                    String[] values = token.split(" ");
-                    return mockMvc.perform(convertOperation(request.getOperation(), request.getEndpoint(), request.getParams())
-                            .header(values[0], values[1], values[2])
-                            .contentType(request.getContentType())
-                            .content(objectMapper.writeValueAsString(request.getBody())));
-                }
-                else
-                    throw new IllegalAccessException("Username or password invalid! - LOGIN FAILED");
-            }
-        }
 
-        if(request.getHeader().getNoHeader()) {
-            return mockMvc.perform(convertOperation(request.getOperation(), request.getEndpoint(), request.getParams())
-                    .contentType(request.getContentType())
-                    .content(objectMapper.writeValueAsString(request.getBody())));
+                String[] methodsStack = authenticatedTestExtension.getMethods();
+                List<String> methodsAuthenticatedTest = authenticatedTestExtension.getMethodsAuthenticatedTest(object);
+
+                if(methodsAuthenticatedTest.contains(methodsStack[3])) {
+
+                    ResultActions resultLogin = authenticateExtension.invokeMethodLogin(object);
+                    if (resultLogin.andReturn().getResponse().getStatus() > 200 && resultLogin.andReturn().getResponse().getStatus() < 300) {
+                        String token = resultLogin.andReturn().getResponse().getContentAsString();
+                        String[] values = token.split(" ");
+                        return mockMvc.perform(convertOperation(request.getOperation(), request.getEndpoint(), request.getParams())
+                                .header(values[0], values[1], values[2])
+                                .contentType(request.getContentType())
+                                .content(objectMapper.writeValueAsString(request.getBody())));
+                    } else
+                        throw new IllegalAccessException("Username or password invalid! - LOGIN FAILED");
+                }
+            }
         }
 
         return mockMvc.perform(convertOperation(request.getOperation(), request.getEndpoint(), request.getParams())
@@ -98,12 +102,4 @@ public class MockTest {
             return patch(endpoint);
         return patch(endpoint, params);
     }
-
-    public void performTest(int countTests) throws Exception {
-        System.out.println("Teste nº 0" + countTests);
-        //mockMvc.perform(get("localhost:8080/hello"));
-    }
-    /*public ResultActions request(RequestBuilder requestBuilder) throws Exception {
-
-    }*/
 }

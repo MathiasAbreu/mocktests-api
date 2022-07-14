@@ -1,20 +1,18 @@
-package br.com.ufcg.easymocktests;
+package br.com.ufcg.easymocktests.extensions;
 
-import br.com.ufcg.easymocktests.interfaces.Authenticate;
-import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
+import br.com.ufcg.easymocktests.annotations.Authenticate;
+import br.com.ufcg.easymocktests.annotations.AuthenticatedTest;
 import org.springframework.test.web.servlet.ResultActions;
 //import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class AuthenticateExtension implements ConstraintValidator<Authenticate, Object> {
+public class AuthenticateExtension {
 
     public static void verifyMethodLoginImplement(Object obj) {
         try {
-            Class clazz = obj.getClass();
+            Class<?> clazz = obj.getClass();
             for (Method m : clazz.getDeclaredMethods()) {
                 if(m.isAnnotationPresent(Authenticate.class)) {
                     m.setAccessible(true);
@@ -74,10 +72,5 @@ public class AuthenticateExtension implements ConstraintValidator<Authenticate, 
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
-        return false;
     }
 }
