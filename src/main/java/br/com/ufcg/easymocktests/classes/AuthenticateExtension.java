@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class Authentication implements ConstraintValidator<Authenticate, Object> {
+public class AuthenticateExtension implements ConstraintValidator<Authenticate, Object> {
 
     public static void verifyMethodLoginImplement(Object obj) {
         try {
@@ -23,6 +23,22 @@ public class Authentication implements ConstraintValidator<Authenticate, Object>
             }
         } catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public boolean methodLoginIsImplement(Object object) {
+
+        try {
+
+            Class<?> c = object.getClass();
+            for (Method method : c.getDeclaredMethods()) {
+
+                if(method.isAnnotationPresent(Authenticate.class))
+                    return true;
+            }
+            return false;
+        } catch (SecurityException e) {
+            return false;
         }
     }
 

@@ -13,4 +13,16 @@ public class Header {
         Header.typeHeader = typeHeader;
         Header.values = values;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public TypeHeader getTypeHeader() {
+        return typeHeader;
+    }
+
+    public String[] getValues() {
+        return values;
+    }
 }

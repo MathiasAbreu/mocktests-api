@@ -1,6 +1,9 @@
 package br.com.ufcg.easymocktests;
 
-import br.com.ufcg.easymocktests.classes.Authentication;
+import br.com.ufcg.easymocktests.classes.AuthenticateExtension;
+import br.com.ufcg.easymocktests.classes.Operation;
+import br.com.ufcg.easymocktests.classes.Request;
+import br.com.ufcg.easymocktests.classes.TypeHeader;
 import br.com.ufcg.easymocktests.interfaces.Authenticate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -9,6 +12,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,7 +25,7 @@ class EasymocktestsApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
 
-	private final MockTest mockTest = new MockTest();
+	private final MockTest mockTest = new MockTest(this);
 
 	@Autowired
 	private ObjectMapper objectMapper;
@@ -32,22 +36,27 @@ class EasymocktestsApplicationTests {
 
 	@Test
 	void verifyProgress() {
-		Authentication.verifyMethodLoginImplement(this);
-		Authentication.verifyTestsUsingAnnotation(this);
+		AuthenticateExtension.verifyMethodLoginImplement(this);
+		AuthenticateExtension.verifyTestsUsingAnnotation(this);
 	}
 
 	@Authenticate
-	void login() throws Exception {
+	ResultActions login() throws Exception {
 
-
-		mockMvc.perform(post("URL").contentType("application/json").content(objectMapper.writeValueAsString(""))).andExpect(status().isOk());
-		System.out.println("logando...");
+		return mockMvc.perform(post("URL").contentType("application/json").content(objectMapper.writeValueAsString(""))).andExpect(status().isOk());
+		//System.out.println("logando...");
 		//mockTest.request(Request.params("parametro1"));
 	}
 
 	@Test
 	void test01() throws Exception {
-		mockTest.performTest(1);
+
+		Request request = new Request();
+		request.operation(Operation.GET)
+				.endpoint("ENDPOINT")
+				.header("Authorization", TypeHeader.BEARER,"TOKEN")
+				.params("1234").contentType("application/json").body("body");
+		mockTest.performTest(request);
 	}
 
 	@Test

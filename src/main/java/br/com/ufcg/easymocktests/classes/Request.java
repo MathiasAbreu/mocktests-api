@@ -43,4 +43,32 @@ public final class Request {
         Request.body = body;
         return this;
     }
+
+    /*
+    *  GETTERS
+    */
+
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public String getEndpoint() {
+        return endpoint;
+    }
+
+    public Header getHeader() {
+        return header;
+    }
+
+    public Object[] getParams() {
+        return params;
+    }
+
+    public Object getBody() {
+        return body;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
 }
