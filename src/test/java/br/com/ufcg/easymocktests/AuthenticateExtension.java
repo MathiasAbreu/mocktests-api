@@ -1,7 +1,8 @@
-package br.com.ufcg.easymocktests.classes;
+package br.com.ufcg.easymocktests;
 
 import br.com.ufcg.easymocktests.interfaces.Authenticate;
 import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
+import org.springframework.test.web.servlet.ResultActions;
 //import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
 
 import javax.validation.ConstraintValidator;
@@ -40,6 +41,23 @@ public class AuthenticateExtension implements ConstraintValidator<Authenticate, 
         } catch (SecurityException e) {
             return false;
         }
+    }
+
+    public ResultActions invokeMethodLogin(Object object) {
+
+        try {
+
+            Class<?> c = object.getClass();
+            for (Method method : c.getDeclaredMethods()) {
+
+                if(method.isAnnotationPresent(Authenticate.class))
+                    return (ResultActions) method.invoke(object);
+            }
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
     }
 
     public static void verifyTestsUsingAnnotation(Object obj) {
