@@ -40,7 +40,7 @@ public class MockTest {
 
             }
         }
-        
+
         return mockMvc.perform(convertOperation(request.getOperation(), request.getEndpoint(), request.getParams())
                 .header(request.getHeader().getName(), convertTypeHeaders(request.getHeader().getTypeHeader()) + request.getHeader().getValues())
                 .contentType(request.getContentType())
