@@ -1,10 +1,10 @@
 package br.com.ufcg.easymocktests;
 
-import br.com.ufcg.easymocktests.classes.AuthenticateExtension;
 import br.com.ufcg.easymocktests.classes.Operation;
 import br.com.ufcg.easymocktests.classes.Request;
 import br.com.ufcg.easymocktests.classes.TypeHeader;
 import br.com.ufcg.easymocktests.interfaces.Authenticate;
+import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
