@@ -17,7 +17,7 @@ public class AuthenticatedTestExtension {
 
     public List<String> getMethodsAuthenticatedTest(Object object) {
 
-        List<String> listMethods = new ArrayList<String>();
+        List<String> listMethods = new ArrayList<>();
 
         try {
             Class<?> c = object.getClass();

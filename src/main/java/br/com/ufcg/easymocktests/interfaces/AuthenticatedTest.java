@@ -1,6 +1,7 @@
-package br.com.ufcg.easymocktests.annotations;
+package br.com.ufcg.easymocktests.interfaces;
 
 import org.apiguardian.api.API;
+import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.annotation.Testable;
 
 import java.lang.annotation.*;
