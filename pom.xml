@@ -50,7 +50,7 @@
 		<dependency>
 			<groupId>com.github.MathiasAbreu</groupId>
 			<artifactId>MockTests-API</artifactId>
-			<version>1.0</version>
+			<version>-SNAPSHOT</version>
 		</dependency>
     </dependencies>
 
