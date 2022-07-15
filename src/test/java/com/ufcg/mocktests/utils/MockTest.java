@@ -2,7 +2,6 @@ package com.ufcg.mocktests.utils;
 
 import com.ufcg.mocktests.extensions.AuthenticateExtension;
 import com.ufcg.mocktests.extensions.AuthenticatedTestExtension;
-import br.com.ufcg.easymocktests.models.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ufcg.mocktests.models.Header;
 import com.ufcg.mocktests.models.Operation;

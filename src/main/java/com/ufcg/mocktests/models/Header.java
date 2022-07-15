@@ -8,7 +8,7 @@ public class Header {
 
     private static String[] values;
 
-    Header(String name, TypeHeader typeHeader, String... values) {
+    public Header(String name, TypeHeader typeHeader, String... values) {
         Header.name = name;
         Header.typeHeader = typeHeader;
         Header.values = values;
