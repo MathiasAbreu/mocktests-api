@@ -47,11 +47,11 @@
 			<artifactId>junit-jupiter-api</artifactId>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>com.github.MathiasAbreu</groupId>
 			<artifactId>MockTests-API</artifactId>
 			<version>-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<repositories>

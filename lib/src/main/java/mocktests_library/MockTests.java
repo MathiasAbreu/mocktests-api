@@ -1,4 +1,4 @@
-package com.ufcg.mocktests;
+package mocktests_library;
 public class MockTests {
 
 	public boolean someLibraryMethod() {

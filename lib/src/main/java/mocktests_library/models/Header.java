@@ -1,4 +1,4 @@
-package com.ufcg.mocktests.models;
+package mocktests_library.models;
 
 public class Header {
 

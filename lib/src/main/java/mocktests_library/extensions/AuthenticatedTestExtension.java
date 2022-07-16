@@ -1,6 +1,6 @@
-package com.ufcg.mocktests.extensions;
+package mocktests_library.extensions;
 
-import com.ufcg.mocktests.annotations.AuthenticatedTest;
+import mocktests_library.annotations.AuthenticatedTest;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

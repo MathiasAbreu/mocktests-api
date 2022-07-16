@@ -1,4 +1,4 @@
-package com.ufcg.mocktests.annotations;
+package mocktests_library.annotations;
 
 import org.apiguardian.api.API;
 import org.junit.platform.commons.annotation.Testable;
