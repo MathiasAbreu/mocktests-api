@@ -1,7 +1,7 @@
 package mocktests_library;
 public class MockTests {
 
-	public boolean someLibraryMethod() {
-		return true;
+	public static void main(String[] args) {
+
 	}
 }
