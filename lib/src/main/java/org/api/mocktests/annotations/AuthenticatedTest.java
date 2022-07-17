@@ -1,4 +1,4 @@
-package mocktests_library.annotations;
+package org.api.mocktests.annotations;
 
 import org.apiguardian.api.API;
 import org.junit.platform.commons.annotation.Testable;

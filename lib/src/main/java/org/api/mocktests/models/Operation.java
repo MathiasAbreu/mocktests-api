@@ -1,4 +1,4 @@
-package mocktests_library.models;
+package org.api.mocktests.models;
 
 public enum Operation {
     GET("get"),

@@ -1,12 +1,12 @@
 package com.ufcg.mocktests.utils;
 
 import com.ufcg.mocktests.extensions.AuthenticateExtension;
-import mocktests_library.extensions.AuthenticatedTestExtension;
+import org.api.mocktests.extensions.AuthenticatedTestExtension;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mocktests_library.models.Header;
-import mocktests_library.models.Operation;
-import mocktests_library.models.Request;
-import mocktests_library.models.TypeHeader;
+import org.api.mocktests.models.Header;
+import org.api.mocktests.models.Operation;
+import org.api.mocktests.models.Request;
+import org.api.mocktests.models.TypeHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

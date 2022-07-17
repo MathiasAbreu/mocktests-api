@@ -1,6 +1,6 @@
-package mocktests_library.extensions;
+package org.api.mocktests.extensions;
 
-import mocktests_library.annotations.AuthenticatedTest;
+import org.api.mocktests.annotations.AuthenticatedTest;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

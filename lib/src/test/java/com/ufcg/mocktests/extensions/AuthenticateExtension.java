@@ -1,7 +1,7 @@
 package com.ufcg.mocktests.extensions;
 
-import mocktests_library.annotations.Authenticate;
-import mocktests_library.annotations.AuthenticatedTest;
+import org.api.mocktests.annotations.Authenticate;
+import org.api.mocktests.annotations.AuthenticatedTest;
 import org.springframework.test.web.servlet.ResultActions;
 //import br.com.ufcg.easymocktests.interfaces.AuthenticatedTest;
 

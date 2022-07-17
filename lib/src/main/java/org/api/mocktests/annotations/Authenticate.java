@@ -1,4 +1,4 @@
-package mocktests_library.annotations;
+package org.api.mocktests.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

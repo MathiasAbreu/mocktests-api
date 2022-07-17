@@ -1,9 +1,9 @@
-package config;
+package org.api.mocktests.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "lib")
+@ComponentScan(basePackages = "org.api.mocktests")
 public class MockTestsConfiguration {
 }
